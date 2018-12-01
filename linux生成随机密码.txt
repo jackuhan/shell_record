@@ -1,0 +1,25 @@
+Linux系统生成随机密码
+
+```
+date +%s |sha256sum |base64 |head -c 32 ;echo
+< /dev/urandom tr -dc _A-Z-a-z-0-9 |head -c${1:-32};echo
+openssl rand -base64 32
+tr -cd '[:alnum:]' < /dev/urandom | fold -w32 | head -n1;echo
+strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 32 | tr -d '\n'; echo
+< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32;echo
+dd if=/dev/urandom bs=1 count=32 2>/dev/null | base64 -w 0 | rev | cut -b 2- | rev
+</dev/urandom tr -dc '12345!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB' | head -c32; echo
+randpw(){ < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo;}
+date | md5sum
+date | base64
+ifconfig | md5sum
+ifconfig | base64
+date +%s
+date +%N
+date +%s%N
+echo $RANDOM
+head -200 /dev/urandom | cksum
+head -200 /dev/urandom | cksum | cut -f1 -d" "
+cat /proc/sys/kernel/random/uuid
+cat /proc/sys/kernel/random/uuid| cksum | cut -f1 -d" "
+```
