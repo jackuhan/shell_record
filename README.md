@@ -107,4 +107,5 @@ linux mac 常用脚本记录
 ./sublime3.md
 ./u3d.txt
 ./ubuntu学习.txt
+.wx_protocol
 ```
